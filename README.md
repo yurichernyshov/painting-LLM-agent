@@ -1,22 +1,6 @@
 # painting-LLM-agent
 LLM agent project for testing purposes
 
-# Project structure
-llm_shapes_project/
-├── main.py
-├── agent.py
-├── database.py
-├── shapes_manager.py
-├── config.py
-├── templates/
-│   └── index.html
-├── static/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── app.js
-├── requirements.txt
-└── users.db
 
 # Key Features Implemented
 - LLM Processing - Uses Ollama with qwen3:4b model instead of regex
@@ -30,14 +14,14 @@ llm_shapes_project/
 - Shape Suggestions - AI-powered recommendations based on history
 
 Example User Flow
-User registers/logs in
-System asks "Who are you?" (through login)
-Canvas loads with user's favorite shapes from history
-User says "add red circle"
-LLM processes command, updates database
-Canvas refreshes automatically
-User can view stats showing total shapes drawn
-On next login, canvas shows accumulated shapes
+- User registers/logs in
+- System asks "Who are you?" (through login)
+- Canvas loads with user's favorite shapes from history
+- User says "add red circle"
+- LLM processes command, updates database
+- Canvas refreshes automatically
+- User can view stats showing total shapes drawn
+- On next login, canvas shows accumulated shapes
 
 
 # Setup instructions
