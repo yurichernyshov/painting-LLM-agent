@@ -148,11 +148,13 @@ function register() {
     socket.emit('register_user', { username, password });
 }
 
+
 function login() {
+
     const username = document.getElementById('loginUsername').value.trim();
     const password = document.getElementById('loginPassword').value;
-    
-    if (!username || !password) {
+     
+    if (username=="" || password=="") {
         addMessage('Please fill in all fields', 'agent', 'error');
         return;
     }

@@ -123,8 +123,6 @@ async def register_user(sid, data):
             'username': username
         }
         
-        # Send welcome message
-        welcome_msg = agent.generate_welcome_message(username, preferences)
         
         await sio.emit('auth_response', {
             'success': True,
@@ -135,6 +133,9 @@ async def register_user(sid, data):
         }, room=sid)
         
         await sio.emit('shapes_updated', shapes, room=sid)
+ 
+        # Send welcome message
+        welcome_msg = agent.generate_welcome_message(username, preferences)
         await sio.emit('agent_response', {
             'message': welcome_msg,
             'success': True,
@@ -182,10 +183,7 @@ async def login_user(sid, data):
         'user_id': user['id'],
         'username': username
     }
-    
-    # Send welcome message
-    welcome_msg = agent.generate_welcome_message(username, preferences)
-    
+       
     await sio.emit('auth_response', {
         'success': True,
         'message': 'Login successful!',
@@ -194,7 +192,11 @@ async def login_user(sid, data):
         'user_id': user['id']
     }, room=sid)
     
-    await sio.emit('shapes_updated', shapes, room=sid)
+    import pickle
+    await sio.emit('shapes_updated', pickle.dumps(shapes), room=sid)
+
+    # Send welcome message
+    welcome_msg = agent.generate_welcome_message(username, preferences)
     await sio.emit('agent_response', {
         'message': welcome_msg,
         'success': True,
